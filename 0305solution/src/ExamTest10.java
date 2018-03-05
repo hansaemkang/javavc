@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /*[문제10] 가위, 바위, 보 게임
@@ -14,7 +16,7 @@ import java.util.Scanner;
 컴퓨터 : 바위     사용자 : 바위     결과 : You Draw!!
 
 */
-public class ExamTest10 {
+/*public class ExamTest10 {
 	public static void main(String[] args) {
 		int com=(((int)Math.random()*3)+1);
 		Scanner sc=new Scanner(System.in);
@@ -45,4 +47,60 @@ public class ExamTest10 {
 				System.out.println("YOU DRAW");
 		}
 	}
+}*/
+public class ExamTest10 {
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		int randNum = (int)(Math.random()*3) + 1;
+		HashMap<Integer, String> map = new HashMap<>();
+		map.put(1, "가위");
+		map.put(2, "바위");
+		map.put(3, "보");
+		
+		System.out.print("가위(1), 바위(2), 보(3) 입력 : ");
+		Scanner sc = new Scanner(System.in);
+		int userNum = sc.nextInt();
+		
+		System.out.print("컴퓨터 : " + map.get(randNum) + "\t사용자 : " + map.get(userNum));
+		if((userNum == 1 && randNum == 3) || randNum < userNum)
+			System.out.println("\t결과 : You Win!!");
+		else if(randNum == userNum)
+			System.out.println("\t결과 : You Draw!!");
+		else if((userNum == 3 && randNum == 1) || randNum > userNum)
+			System.out.println("\t결과 : You Lose!!");
+	}
 }
+
+//------------------------------------------------------------------
+/*
+public class ExamTest10 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int com = (int)(Math.random()*3+1);
+		String coms = null;
+		String users = null;
+		
+		System.out.print("가위(1), 바위(2), 보(3) 입력 :");	
+		int user = sc.nextInt();
+		
+		if(com==1)			 coms = "가위";  
+		else if(com==2)	 coms = "바위";   
+		else					 coms = "보";
+		System.out.print("컴퓨터 : "+coms);
+		
+		if(user==1)			users = "가위";
+		else if(user==2)	users = "바위";
+		else					users = "보";
+		System.out.print("\t사용자 : "+users);
+		
+		if((com==1&&user==2)||(com==2&&user==3)
+				   ||(com==3&&user==1))
+			System.out.print("\t결과 : You Win!!!");
+		else if((com==1&&user==3)||(com==2&&user==1)
+				   ||(com==3&&user==2))
+			System.out.print("\t결과 : You Lose!!");		
+		else
+			System.out.print("\t결과 : You Draw!!");		
+		sc.close();
+	}
+}
+*/
